@@ -17,7 +17,7 @@ public class Backjoon14889 {
         processCommand.solution();
     }
     // test 함수
-    public int main(int personCount, int[][] score) throws IOException{
+    public int main(int personCount, int[][] score) {
         Solution_Backjoon14889 processCommand = new Solution_Backjoon14889();
         return processCommand.solution(personCount, score);
     }
@@ -40,7 +40,7 @@ class Solution_Backjoon14889{
     }
 
     // test 함수
-    public int solution(int N, int[][] score) throws IOException {
+    public int solution(int N, int[][] score) {
         abilityValueSize = N;
         abilityValue = score;
         visited = new boolean[abilityValueSize+1];
@@ -79,25 +79,38 @@ class Solution_Backjoon14889{
 
     public int getSumOfStartTeam(){
         int sumOfStartTeam = 0;
-        for(int i=1; i<=abilityValueSize; i++){
-            for(int j=1; j<=abilityValueSize; j++){
-                if(visited[i] && visited[j]){
-                    sumOfStartTeam += abilityValue[i][j];
-                }
-            }
+        for(int row=1; row<=abilityValueSize; row++){
+            sumOfStartTeam += getSumOfStartTeamForAllCols(row);
         }
         return sumOfStartTeam;
     }
 
+    public int getSumOfStartTeamForAllCols(int row){
+        int sumOfStartTeamForAllCols = 0;
+        for(int col=1; col<=abilityValueSize; col++){
+            if(visited[row] && visited[col]){
+                sumOfStartTeamForAllCols += abilityValue[row][col];
+            }
+        }
+        return sumOfStartTeamForAllCols;
+    }
+
     public int getSumOfLinkTeam(){
         int sumOfLinkTeam = 0;
-        for(int i=1; i<=abilityValueSize; i++){
-            for(int j=1; j<=abilityValueSize; j++){
-                if(!visited[i] && !visited[j]){
-                    sumOfLinkTeam += abilityValue[i][j];
-                }
-            }
+        for(int row=1; row<=abilityValueSize; row++){
+            sumOfLinkTeam += getSumOfLinkTeamForAllCols(row);
         }
         return sumOfLinkTeam;
     }
+
+    public int getSumOfLinkTeamForAllCols(int row){
+        int sumOfLinkTeamForAllCols = 0;
+        for(int col=1; col<=abilityValueSize; col++){
+            if(visited[row] && visited[col]){
+                sumOfLinkTeamForAllCols += abilityValue[row][col];
+            }
+        }
+        return sumOfLinkTeamForAllCols;
+    }
+
 }
