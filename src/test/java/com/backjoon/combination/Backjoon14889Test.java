@@ -3,12 +3,10 @@ package com.backjoon.combination;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.IOException;
-
 public class Backjoon14889Test {
 
     @Test
-    public void testCase01() throws IOException {
+    public void testCase01() {
         //GIVEN - 테스트케이스, 결과기댓값 준비
         int personCount = 4;
         int[][] score = {{0, 0, 0, 0, 0},
@@ -27,7 +25,7 @@ public class Backjoon14889Test {
     }
 
     @Test
-    public void testCase02() throws IOException {
+    public void testCase02() {
         //GIVEN - 테스트케이스, 결과기댓값 준비
         int personCount = 6;
         int[][] score = {{0, 0, 0, 0, 0, 0, 0},
@@ -48,7 +46,7 @@ public class Backjoon14889Test {
     }
 
     @Test
-    public void testCase03() throws IOException {
+    public void testCase03() {
         //GIVEN - 테스트케이스, 결과기댓값 준비
         int personCount = 8;
         int[][] score = {{0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -61,6 +59,44 @@ public class Backjoon14889Test {
                         {0, 9, 1, 9, 1, 9, 1, 0, 9},
                         {0, 6, 5, 4, 3, 2, 1, 9, 0}};
         int expectedResultValue = 1;
+
+        //WHEN - 실제 로직 수행
+        Backjoon14889 backjoon14889 = new Backjoon14889();
+        int actualResultValue = backjoon14889.main(personCount, score);
+
+        //then
+        Assert.assertEquals(expectedResultValue, actualResultValue);
+    }
+
+    @Test
+    public void testCase04() {
+        //GIVEN - 테스트케이스, 결과기댓값 준비
+        int personCount = 4;
+        int[][] score = {{0, 0, 0, 0, 0},
+                        {0, 0, 8, 2, 3},
+                        {0, 3, 0, 5, 4},
+                        {0, 7, 1, 0, 1},
+                        {0, 3, 4, 4, 0}};
+        int expectedResultValue = 0;
+
+        //WHEN - 실제 로직 수행
+        Backjoon14889 backjoon14889 = new Backjoon14889();
+        int actualResultValue = backjoon14889.main(personCount, score);
+
+        //then
+        Assert.assertEquals(expectedResultValue, actualResultValue);
+    }
+
+    @Test
+    public void testCase05() {
+        //GIVEN - 테스트케이스, 결과기댓값 준비
+        int personCount = 4;
+        int[][] score = {{0, 0, 0, 0, 0},
+                        {0, 0, 1, 1, 1},
+                        {0, 1, 0, 1, 1},
+                        {0, 1, 1, 0, 1},
+                        {0, 1, 1, 1, 0}};
+        int expectedResultValue = 0;
 
         //WHEN - 실제 로직 수행
         Backjoon14889 backjoon14889 = new Backjoon14889();
