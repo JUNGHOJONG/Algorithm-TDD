@@ -106,7 +106,7 @@ class Solution_Backjoon14889{
     public int getSumOfLinkTeamForAllCols(int row){
         int sumOfLinkTeamForAllCols = 0;
         for(int col=1; col<=abilityValueSize; col++){
-            if(visited[row] && visited[col]){
+            if(!visited[row] && !visited[col]){
                 sumOfLinkTeamForAllCols += abilityValue[row][col];
             }
         }
