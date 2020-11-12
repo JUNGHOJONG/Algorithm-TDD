@@ -1,6 +1,7 @@
 package com.programmers.sort;
 
 import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -59,7 +60,7 @@ class Solution_FileNameAlignment{
     }
 
     public String[] solution(String[] files){
-        PriorityQueue<File> priorityQueue = new PriorityQueue<>();
+        Queue<File> priorityQueue = new PriorityQueue<>();
         int index = 0;
         for(String file : files){
             priorityQueue.add(new File(file, index));
