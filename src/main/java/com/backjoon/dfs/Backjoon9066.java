@@ -17,9 +17,9 @@ public class Backjoon9066 {
         processCommand.solution();
     }
 
-    public static int main(int mapSize, Character[][] map){
+    public static int main(int mapSize, Character[][] safe){
         Solution_Backjoon9066 processCommand = new Solution_Backjoon9066();
-        return processCommand.solution(mapSize, map);
+        return processCommand.solution(mapSize, safe);
     }
 
 }
@@ -30,41 +30,42 @@ class Solution_Backjoon9066{
     private static final Character HORIZONTAL  = 'H';
 
     private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    private Character[][] map;
+    private Character[][] safe;
     private Integer minCount = Integer.MAX_VALUE;
     private Boolean check = true;
+
     public void solution() throws IOException {
         int testCase = Integer.parseInt(br.readLine());
         for(int i=0; i<testCase; i++){
-            Integer mapSize = Integer.parseInt(br.readLine());
-            map = new Character[mapSize][mapSize];
-            initMap(mapSize);
-            for(int j = 1; j<=mapSize*mapSize && check; j++){
-                dfs(0, 0, mapSize, j);
+            Integer safeSize = Integer.parseInt(br.readLine());
+            safe = new Character[safeSize][safeSize];
+            initSafe(safeSize);
+            for(int j = 1; j<=safeSize*safeSize && check; j++){
+                openSafe(0, 0, safeSize, j);
             }
             check = true;
             System.out.println(minCount);
         }
     }
 
-    public int solution(int mapSize, Character[][] tempMap) {
-        map = tempMap;
+    public int solution(int mapSize, Character[][] tempSafe) {
+        safe = tempSafe;
         for (int j = 1; j <= mapSize * mapSize && check; j++) {
-            dfs(0, 0, mapSize, j);
+            openSafe(0, 0, mapSize, j);
         }
         return minCount;
     }
 
-    public void initMap(int mapSize) throws IOException{
+    public void initSafe(int mapSize) throws IOException{
         for(int i=0; i<mapSize; i++){
             StringTokenizer st = new StringTokenizer(br.readLine());
             for(int j=0; j<mapSize; j++){
-                map[i][j] = st.nextToken().charAt(0);
+                safe[i][j] = st.nextToken().charAt(0);
             }
         }
     }
 
-    public void dfs(int index, int depth, int mapSize, int end) {
+    public void openSafe(int index, int depth, int mapSize, int end) {
         if (depth == end) {
             if (isPossibleOpenSafe(mapSize)) {
                 minCount = Math.min(minCount, depth);
@@ -76,7 +77,7 @@ class Solution_Backjoon9066{
             int x = i % mapSize;
             int y = i / mapSize;
             changeKeyDirection(x, y, mapSize);
-            dfs(i + 1, depth + 1, mapSize, end);
+            openSafe(i + 1, depth + 1, mapSize, end);
             changeKeyDirection(x, y, mapSize);
         }
     }
@@ -84,7 +85,7 @@ class Solution_Backjoon9066{
     public boolean isPossibleOpenSafe(int mapSize){
         for(int i=0; i<mapSize; i++){
             for(int j=0; j<mapSize; j++){
-                if(map[i][j] == VERTICAL){
+                if(safe[i][j] == VERTICAL){
                     return false;
                 }
             }
@@ -99,22 +100,22 @@ class Solution_Backjoon9066{
 
     public void changeKeyDirectionWithRow(int x, int mapSize){
         for(int i=0; i<mapSize; i++){
-            if(map[i][x] == HORIZONTAL){
-                map[i][x] = VERTICAL;
+            if(safe[i][x] == HORIZONTAL){
+                safe[i][x] = VERTICAL;
                 continue;
             }
-            map[i][x] = HORIZONTAL;
+            safe[i][x] = HORIZONTAL;
         }
     }
 
     public void changeKeyDirectionWithCol(int x, int y, int mapSize){
         for(int j=0; j<mapSize; j++){
             if(x == j) continue;
-            if(map[y][j] == HORIZONTAL){
-                map[y][j] = VERTICAL;
+            if(safe[y][j] == HORIZONTAL){
+                safe[y][j] = VERTICAL;
                 continue;
             }
-            map[y][j] = HORIZONTAL;
+            safe[y][j] = HORIZONTAL;
         }
     }
 }
