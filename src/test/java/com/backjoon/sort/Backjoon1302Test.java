@@ -69,4 +69,5 @@ public class Backjoon1302Test {
         //THEN
         Assert.assertEquals(expectedResult, actualResult);
     }
+
 }
