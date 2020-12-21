@@ -10,6 +10,11 @@ public class Backjoon1021 {
         Solution_Backjoon1021 processCommand = new Solution_Backjoon1021();
         processCommand.solution();
     }
+
+    public int main(int queueSize, int[] numberToPick) {
+        Solution_Backjoon1021 processCommand = new Solution_Backjoon1021();
+        return processCommand.solution(queueSize, numberToPick);
+    }
 }
 
 class Solution_Backjoon1021 {
@@ -26,26 +31,41 @@ class Solution_Backjoon1021 {
             rotationQueue.addLast(i);
         }
 
-        int sum = 0;
+        int minMoveCount = 0;
         st = new StringTokenizer(br.readLine());
         for (int i=1; i<=numberToPickCount; i++) {
             int numberToPick = Integer.parseInt(st.nextToken());
-            int index = getIndexOfNumberToPick(numberToPick, rotationQueue);
-            if (index < rotationQueue.size() - index) {
-                sum += index;
-                for (int j=0; j<index; j++) {
-                    rotationQueue.addLast(rotationQueue.pollFirst());
-                }
-                rotationQueue.pollFirst();
+            int indexOfNumberToPick = getIndexOfNumberToPick(numberToPick, rotationQueue);
+            if (indexOfNumberToPick < rotationQueue.size() - indexOfNumberToPick) {
+                minMoveCount += indexOfNumberToPick;
+                commandSecondOperator(indexOfNumberToPick, rotationQueue);
                 continue;
             }
-            sum += rotationQueue.size() - index;
-            for (int j=0; j<rotationQueue.size() - index; j++) {
-                rotationQueue.addFirst(rotationQueue.pollLast());
-            }
-            rotationQueue.pollFirst();
+            minMoveCount += rotationQueue.size() - indexOfNumberToPick;
+            commandThirdOperator(indexOfNumberToPick, rotationQueue);
         }
-        System.out.println(sum);
+        System.out.println(minMoveCount);
+    }
+
+    public int solution(int queueSize, int[] numberToPick) {
+        Deque<Integer> rotationQueue = new ArrayDeque<>();
+
+        for (int i=1; i<=queueSize; i++) {
+            rotationQueue.addLast(i);
+        }
+
+        int minMoveCount = 0;
+        for (int value : numberToPick) {
+            int indexOfNumberToPick = getIndexOfNumberToPick(value, rotationQueue);
+            if (indexOfNumberToPick < rotationQueue.size() - indexOfNumberToPick) {
+                minMoveCount += indexOfNumberToPick;
+                commandSecondOperator(indexOfNumberToPick, rotationQueue);
+                continue;
+            }
+            minMoveCount += rotationQueue.size() - indexOfNumberToPick;
+            commandThirdOperator(indexOfNumberToPick, rotationQueue);
+        }
+        return minMoveCount;
     }
 
     private int getIndexOfNumberToPick(int numberToPick, Deque<Integer> rotationQueue) {
@@ -57,6 +77,20 @@ class Solution_Backjoon1021 {
             index++;
         }
         return index;
+    }
+
+    private void commandSecondOperator(int index, Deque<Integer> rotationQueue) {
+        for (int j=0; j<index; j++) {
+            rotationQueue.addLast(rotationQueue.pollFirst());
+        }
+        rotationQueue.pollFirst();
+    }
+
+    private void commandThirdOperator(int index, Deque<Integer> rotationQueue) {
+        for (int j=0; j<rotationQueue.size() - index; j++) {
+            rotationQueue.addFirst(rotationQueue.pollLast());
+        }
+        rotationQueue.pollFirst();
     }
 
 }
