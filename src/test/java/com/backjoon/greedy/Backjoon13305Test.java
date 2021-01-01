@@ -21,7 +21,7 @@ public class Backjoon13305Test {
         int expectedResult = 18;
 
         //WHEN
-        int actualResult = processCommand.main(distance, gasStation);
+        long actualResult = processCommand.main(distance, gasStation);
 
         Assert.assertThat(actualResult, CoreMatchers.is(expectedResult));
     }
@@ -34,7 +34,7 @@ public class Backjoon13305Test {
         int expectedResult = 12;
 
         //WHEN
-        int actualResult = processCommand.main(distance, gasStation);
+        long actualResult = processCommand.main(distance, gasStation);
 
         Assert.assertThat(actualResult, CoreMatchers.is(expectedResult));
     }
@@ -47,7 +47,7 @@ public class Backjoon13305Test {
         int expectedResult = 7;
 
         //WHEN
-        int actualResult = processCommand.main(distance, gasStation);
+        long actualResult = processCommand.main(distance, gasStation);
 
         Assert.assertThat(actualResult, CoreMatchers.is(expectedResult));
     }
@@ -60,7 +60,7 @@ public class Backjoon13305Test {
         int expectedResult = 81;
 
         //WHEN
-        int actualResult = processCommand.main(distance, gasStation);
+        long actualResult = processCommand.main(distance, gasStation);
 
         Assert.assertThat(actualResult, CoreMatchers.is(expectedResult));
     }
@@ -73,7 +73,7 @@ public class Backjoon13305Test {
         int expectedResult = 38;
 
         //WHEN
-        int actualResult = processCommand.main(distance, gasStation);
+        long actualResult = processCommand.main(distance, gasStation);
 
         Assert.assertThat(actualResult, CoreMatchers.is(expectedResult));
     }
