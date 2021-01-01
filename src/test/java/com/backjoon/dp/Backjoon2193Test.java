@@ -19,7 +19,7 @@ public class Backjoon2193Test {
 
         int expectedResult = 1;
 
-        int actualResult = backjoon2193.main(pinaryNumberOfDigits);
+        long actualResult = backjoon2193.main(pinaryNumberOfDigits);
 
         Assert.assertThat(actualResult, CoreMatchers.is(expectedResult));
     }
@@ -30,7 +30,7 @@ public class Backjoon2193Test {
 
         int expectedResult = 1;
 
-        int actualResult = backjoon2193.main(pinaryNumberOfDigits);
+        long actualResult = backjoon2193.main(pinaryNumberOfDigits);
 
         Assert.assertThat(actualResult, CoreMatchers.is(expectedResult));
     }
@@ -41,7 +41,7 @@ public class Backjoon2193Test {
 
         int expectedResult = 2;
 
-        int actualResult = backjoon2193.main(pinaryNumberOfDigits);
+        long actualResult = backjoon2193.main(pinaryNumberOfDigits);
 
         Assert.assertThat(actualResult, CoreMatchers.is(expectedResult));
     }
@@ -52,7 +52,7 @@ public class Backjoon2193Test {
 
         int expectedResult = 55;
 
-        int actualResult = backjoon2193.main(pinaryNumberOfDigits);
+        long actualResult = backjoon2193.main(pinaryNumberOfDigits);
 
         Assert.assertThat(actualResult, CoreMatchers.is(expectedResult));
     }
@@ -63,7 +63,7 @@ public class Backjoon2193Test {
 
         int expectedResult = 610;
 
-        int actualResult = backjoon2193.main(pinaryNumberOfDigits);
+        long actualResult = backjoon2193.main(pinaryNumberOfDigits);
 
         Assert.assertThat(actualResult, CoreMatchers.is(expectedResult));
     }
