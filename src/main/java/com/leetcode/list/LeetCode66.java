@@ -14,6 +14,11 @@ public class LeetCode66 {
         solution_leetCode66.solution01(test1);
         solution_leetCode66.solution02(test1);
     }
+
+    public int[] mains(int[] args) {
+        Solution_LeetCode66 solution_leetCode66 = new Solution_LeetCode66();
+        return solution_leetCode66.solution02(args);
+    }
 }
 
 class Solution_LeetCode66 {
@@ -52,10 +57,6 @@ class Solution_LeetCode66 {
      *  flag 변수를 사용해서 break 를 타지않고 종료 했을경우, 맨앞 값이 1인 배열(길이 + 1 -> 맨앞 제외 모든 배열값은 0) 을 리턴한다.
      */
     public int[] solution02(int[] digits) {
-        // 이 방법의 문제점: int 허용범위를 넘는다...
-        // 999 -> 1000
-        // 989 -> 990
-        // 899 -> 900
         int length = digits.length;
         boolean digitIncrementYn = true;
         for (int i=length-1; i>=0; i--) {
